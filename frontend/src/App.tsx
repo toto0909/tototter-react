@@ -5,8 +5,10 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 import EmailIcon from '@mui/icons-material/Email';
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 //Components
+import Header from "./components/headerComponents/Header";
 import Home from "./components/homeComponents/Home";
 import Search from "./components/searchComponents/Search";
+import List from "./components/listComponents/List";
 import Detail from "./components/detailComponents/Detail";
 import NotFound from "./components/utilComponents/NotFound";
 import './App.css';
@@ -15,6 +17,7 @@ function App() {
   return (
     <BrowserRouter>
     <div className="App">
+        <Header />
         {/* routing設定 */}
         <Link to="/">Home</Link>
         <Link to="/search">Search</Link>
@@ -43,6 +46,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/search" element={<Search />} />
         <Route path="/detail" element={<Detail />} />
+        <Route path="/list" element={<List />} />
         <Route path="/*" element={<NotFound />} />
       </Routes>
     </div>
