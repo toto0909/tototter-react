@@ -3,16 +3,22 @@ import Button from '@mui/material/Button';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import EmailIcon from '@mui/icons-material/Email';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
+import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
+//Components
+import Home from "./components/homeComponents/Home";
+import Search from "./components/searchComponents/Search";
+import Detail from "./components/detailComponents/Detail";
+import NotFound from "./components/utilComponents/NotFound";
 import './App.css';
 
 function App() {
   return (
+    <BrowserRouter>
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
+        {/* routing設定 */}
+        <Link to="/">Home</Link>
+        <Link to="/search">Search</Link>
+        <Link to="/detail">Detail</Link>
         <Button variant="contained">MUIボタン使用テスト</Button>
         <p>マテリアルICON表示テスト</p>
         <div className='wrap'>
@@ -32,49 +38,15 @@ function App() {
           </div>
           <hr />
         </div>
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
+      {/* routing先 */}
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/search" element={<Search />} />
+        <Route path="/detail" element={<Detail />} />
+        <Route path="/*" element={<NotFound />} />
+      </Routes>
     </div>
+    </BrowserRouter>
   );
 }
 
