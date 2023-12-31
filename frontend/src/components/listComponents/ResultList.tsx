@@ -1,20 +1,39 @@
 import React from 'react'
 import { useLocation } from "react-router-dom";
 import { useState, useEffect } from 'react';
+//MUI
+import Container from "@mui/material/Container";
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
+import ListItemAvatar from '@mui/material/ListItemAvatar';
+import Avatar from '@mui/material/Avatar';
+import ImageIcon from '@mui/icons-material/Image';
 import Box from '@mui/material/Box';
 import CircularProgress from '@mui/material/CircularProgress';
-//型設定
+import Divider from '@mui/material/Divider';
+import { styled } from '@mui/material/styles';
+//型・定数設定
 import Ningyo from '../../types';
+import {teamTypeArray} from '../../const';
 //firebase関係
 import { db } from '../../firebase';
 import { collection, getDocs, CollectionReference } from 'firebase/firestore';
+//react-router-dom
+import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 
 //表示タイプ定義(人形, 軍団, 地理を出し分け)
 interface State {
     list_type: string;
 }
 
-const List:React.FC = () => {
+//Detail画面遷移Link用Style定義
+const DetailLink = styled(Link)`
+    text-decoration: none;
+    color: black;
+`;
+
+const ResultList:React.FC = () => {
     //Home.tsxから表示条件を受け取る
     const location = useLocation();
     const { list_type } = location.state as State;
@@ -53,12 +72,26 @@ const List:React.FC = () => {
                 </Box>
             </>
             //通信終了時
-            :<>
+            :<Container maxWidth='md'>
                 {list_type == 'ningyo' &&
                     <div>
-                        {ningyos.map((ningyo) => (
-                            <div key={ningyo.name}>{ningyo.name}</div>
-                        ))}
+                        <List sx={{ width: '100%', bgcolor: 'background.paper' }}>
+                            {ningyos.map((ningyo) => (
+                                <div key={ningyo.name}>
+                                    <DetailLink to="/detail" state={{ningyoObject: ningyo }}>
+                                        <ListItem>
+                                            <ListItemAvatar>
+                                            <Avatar>
+                                                <ImageIcon />
+                                            </Avatar>
+                                            </ListItemAvatar>
+                                            <ListItemText primary={ningyo.name} secondary={teamTypeArray[ningyo.team_id].value + '軍 ' + '統率' + ningyo.power_leadership + ' 武力' + ningyo.power_force + ' 知力' + ningyo.power_intelligence + ' 政治' + ningyo.power_politics} />
+                                        </ListItem>
+                                    </DetailLink>
+                                    <Divider />
+                                </div>
+                            ))}
+                        </List>
                     </div>
                 }
 
@@ -71,10 +104,10 @@ const List:React.FC = () => {
                 {list_type == 'geography' &&
                     <div>地理一覧</div>
                 }
-            </>
+            </Container>
         }
         </>
     )
 }
 
-export default List
+export default ResultList
