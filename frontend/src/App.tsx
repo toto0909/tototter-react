@@ -8,7 +8,7 @@ import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 import Header from "./components/headerComponents/Header";
 import Home from "./components/homeComponents/Home";
 import Search from "./components/searchComponents/Search";
-import List from "./components/listComponents/List";
+import ResultList from "./components/listComponents/ResultList";
 import Detail from "./components/detailComponents/Detail";
 import NotFound from "./components/utilComponents/NotFound";
 import './App.css';
@@ -18,10 +18,6 @@ function App() {
     <BrowserRouter>
     <div className="App">
         <Header />
-        {/* routing設定 */}
-        <Link to="/">Home</Link>
-        <Link to="/search">Search</Link>
-        <Link to="/detail">Detail</Link>
         <Button variant="contained">MUIボタン使用テスト</Button>
         <p>マテリアルICON表示テスト</p>
         <div className='wrap'>
@@ -46,7 +42,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/search" element={<Search />} />
         <Route path="/detail" element={<Detail />} />
-        <Route path="/list" element={<List />} />
+        <Route path="/list" element={<ResultList />} />
         <Route path="/*" element={<NotFound />} />
       </Routes>
     </div>
