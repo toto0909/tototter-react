@@ -13,6 +13,7 @@ interface Ningyo {
     post: string,
     favorite: string,
     image_url: string,
+    rank: string,
 }
 
 export default Ningyo
