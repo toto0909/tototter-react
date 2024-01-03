@@ -18,7 +18,7 @@ function App() {
     <BrowserRouter>
     <div className="App">
         <Header />
-        <Button variant="contained">MUIボタン使用テスト</Button>
+        {/* <Button variant="contained">MUIボタン使用テスト</Button>
         <p>マテリアルICON表示テスト</p>
         <div className='wrap'>
           <div className='icon_area'>
@@ -36,7 +36,7 @@ function App() {
             <span className='icon_text'>メールアドレス</span>
           </div>
           <hr />
-        </div>
+        </div> */}
       {/* routing先 */}
       <Routes>
         <Route path="/" element={<Home />} />
