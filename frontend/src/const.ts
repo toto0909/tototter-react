@@ -44,7 +44,7 @@ const team_7: teamType = {
     value: "最強ペンギン",
 } as const;
 
-//全学歴配列取得
+//全軍団配列取得
 export const teamTypeArray: teamType[] = [
     team_0, team_1, team_2, team_3, team_4, team_5, team_6, team_7
 ]

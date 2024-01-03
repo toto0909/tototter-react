@@ -1,0 +1,21 @@
+.ningyoName{
+    color: black;
+    text-align: left;
+    font-family: serif;
+    /* background-color: #b0c0de;
+    padding: 10px;
+    margin-bottom: 1rem; */
+}
+.ningyoText{
+    text-align: left;
+}
+
+.ningyoImage{
+    width: 80%;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.ningyoInfoArea{
+    background-color: #eceff1;
+}
